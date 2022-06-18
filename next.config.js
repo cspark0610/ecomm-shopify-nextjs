@@ -1,6 +1,17 @@
+const { withFrameworkConfig } = require("./framework/common/config");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+	framework: {
+		name: "shopify",
+	},
+	reactStrictMode: false,
+	i18n: {
+		locales: ["en-US", "es"],
+		defaultLocale: "en-US",
+	},
+};
 
-module.exports = nextConfig
+// console.log(JSON.stringify(withFrameworkConfig(nextConfig), null, 2));
+
+module.exports = withFrameworkConfig(nextConfig);
