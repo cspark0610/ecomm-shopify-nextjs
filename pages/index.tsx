@@ -3,6 +3,7 @@ import type { InferGetStaticPropsType } from "next";
 //utils frameworks
 import getAllProducts from "../framework/shopify/product/get-all-products";
 import { getConfig } from "../framework/shopify/api/config";
+import { Layout } from "@components/common";
 //componentes absolute paths
 
 export async function getStaticProps() {
@@ -20,4 +21,5 @@ export async function getStaticProps() {
 export default function Home({ products }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return <div className="root">{JSON.stringify(products)}</div>;
 }
-// instead of wrapping with Layout tag in home function see AppProps extension and use Layout component to wrape
+// instead of wrapping with Layout tag in home declare this
+Home.Layout = Layout;

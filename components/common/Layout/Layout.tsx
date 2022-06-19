@@ -8,9 +8,7 @@ export interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
 	return (
 		<div className={s.root}>
-			<main className="fit" style={{ color: "var(--green)" }}>
-				{children}
-			</main>
+			<main className="fit">{children}</main>
 		</div>
 	);
 };
