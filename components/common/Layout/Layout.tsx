@@ -1,14 +1,17 @@
-import React, { FC, PropsWithChildren } from "react";
-// module.css imports styles
+import React, { FC, ReactNode } from "react";
+// styles
 import s from "./Layout.module.css";
 
-const Layout: FC<{ children: any }> = ({ children }: PropsWithChildren<{}>) => {
+export interface LayoutProps {
+	children: ReactNode;
+}
+const Layout: FC<LayoutProps> = ({ children }) => {
 	return (
-		<>
-			<div className={s.root} style={{ backgroundColor: "var(--green)" }}>
-				<main className="fit">{children}</main>;
-			</div>
-		</>
+		<div className={s.root}>
+			<main className="fit" style={{ color: "var(--green)" }}>
+				{children}
+			</main>
+		</div>
 	);
 };
 
