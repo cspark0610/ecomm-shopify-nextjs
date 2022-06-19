@@ -1,8 +1,8 @@
 // types
 import type { InferGetStaticPropsType } from "next";
 //utils frameworks
-import getAllProducts from "../framework/shopify/product/get-all-products";
-import { getConfig } from "../framework/shopify/api/config";
+import getAllProducts from "@framework/product/get-all-products";
+import { getConfig } from "@framework/api/config";
 import { Layout } from "@components/common";
 //componentes absolute paths
 
