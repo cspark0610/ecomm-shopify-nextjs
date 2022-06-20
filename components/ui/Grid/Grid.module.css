@@ -1,0 +1,20 @@
+/*gap-0 means no space between each item*/
+/*grid-template-columns: repeat(3, minmax(0, 1fr));*/
+/*grid-template-rows: repeat(2, minmax(0, 1fr));*/
+.root {
+	@apply grid gap-0 grid-cols-1 grid-rows-2;
+	@screen lg {
+		@apply grid-cols-3 grid-rows-2;
+	}
+
+	& > * {
+		@apply row-span-1 overflow-hidden;
+		height: 500px;
+		max-height: 800px;
+		@screen lg {
+			height: inherit;
+		}
+	}
+}
+
+/* .root > *  ,i m targeting all children inside root div*/

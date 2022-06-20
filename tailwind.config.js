@@ -38,8 +38,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
 	variants: {
 		extend: {},
 	},
+	plugins: [],
 };
