@@ -10,7 +10,6 @@
 	& > * {
 		@apply row-span-1 overflow-hidden;
 		height: 500px;
-		max-height: 800px;
 		@screen lg {
 			height: inherit;
 		}
@@ -18,3 +17,17 @@
 }
 
 /* .root > *  ,i m targeting all children inside root div*/
+
+.layoutA {
+	/* 1th, 7th, 13th */
+	& > *:nth-child(6n + 1),
+	/* 5th, 11th, 17th */
+	& > *:nth-child(6n + 5) {
+		@screen lg {
+			@apply col-span-2 row-span-2;
+		}
+	}
+}
+.layoutB {
+	color: blue;
+}
