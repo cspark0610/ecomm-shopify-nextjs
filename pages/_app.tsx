@@ -1,7 +1,6 @@
 // sirve como wrapper de todos los componentes de la aplicacion
 //styles
 import "@assets/main.css";
-//components
 //types
 import { LayoutProps } from "@components/common/Layout/Layout";
 import { AppProps } from "next/app";

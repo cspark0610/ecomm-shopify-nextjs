@@ -10,7 +10,6 @@ interface GridProps {
 }
 
 const Grid: FC<GridProps> = ({ children, layout = "A" }) => {
-	console.log(layout, "layout");
 	const rootClassName = cn(s.root, {
 		[s.layoutA]: layout === "A",
 		[s.layoutB]: layout === "B",
