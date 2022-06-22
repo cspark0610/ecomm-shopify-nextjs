@@ -1,4 +1,4 @@
-import { createContext, FC, useContext, useReducer } from "react";
+import { createContext, FC, useContext, useReducer, useMemo } from "react";
 
 interface Props {
 	children: any;
@@ -44,12 +44,18 @@ export const UIProvider: FC<Props> = ({ children }) => {
 	const openSidebar = () => dispatch({ type: "OPEN_SIDEBAR" });
 	const closeSidebar = () => dispatch({ type: "CLOSE_SIDEBAR" });
 
-	const value = {
-		...state, // equivalente a la ultima linea
-		openSidebar,
-		closeSidebar,
-		// isSidebarOpen: state.isSidebarOpen,
-	};
+	//2.3 useMemo hook , const value = useMemo(() => stateObject); para prevenir re-renderizaciones excesivas de sideBar y de cartsidebar
+	const value = useMemo(() => {
+		return { ...state, openSidebar, closeSidebar };
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [state.isSidebarOpen]);
+
+	// const value = {
+	// 	...state, // equivalente a la ultima linea
+	// 	openSidebar,
+	// 	closeSidebar,
+	// 	// isSidebarOpen: state.isSidebarOpen,
+	// };
 
 	return <UIContext.Provider value={value}>{children}</UIContext.Provider>;
 };
