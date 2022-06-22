@@ -44,7 +44,7 @@ export const UIProvider: FC<Props> = ({ children }) => {
 	const openSidebar = () => dispatch({ type: "OPEN_SIDEBAR" });
 	const closeSidebar = () => dispatch({ type: "CLOSE_SIDEBAR" });
 
-	//2.3 useMemo hook , const value = useMemo(() => stateObject); para prevenir re-renderizaciones excesivas de sideBar y de cartsidebar
+	//2.3 useMemo hook , const value = useMemo(() => stateObject, [depArray]); para prevenir re-renderizaciones excesivas de sideBar y de cartsidebar
 	const value = useMemo(() => {
 		return { ...state, openSidebar, closeSidebar };
 		// eslint-disable-next-line react-hooks/exhaustive-deps

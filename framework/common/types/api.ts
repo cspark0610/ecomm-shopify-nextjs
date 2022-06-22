@@ -1,7 +1,9 @@
 export type ApiFetcherOptions = {
 	url: string;
 	query: string;
+	variables?: { [key: string]: string };
 };
+export type Variables = { [key: string]: string | undefined };
 
 export type ApiFetcherResults<T> = {
 	data: T;

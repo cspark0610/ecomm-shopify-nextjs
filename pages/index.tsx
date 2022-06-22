@@ -1,7 +1,7 @@
 // types
 import type { InferGetStaticPropsType } from "next";
-//utils frameworks
-import getAllProducts from "@framework/product/get-all-products";
+//frameworks
+import { getAllProducts } from "@framework/product";
 import { getConfig } from "@framework/api/config";
 //componentes absolute paths
 import { Layout } from "@components/common";

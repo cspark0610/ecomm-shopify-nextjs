@@ -1,6 +1,6 @@
 import { ApiFetcherOptions, ApiFetcherResults } from "@common/types/api";
 
-const fetchApi = async <T>({ url, query }: ApiFetcherOptions): Promise<ApiFetcherResults<T>> => {
+const fetchApi = async <T>({ url, query, variables }: ApiFetcherOptions): Promise<ApiFetcherResults<T>> => {
 	// const url = "http://localhost:4000/graphql";
 	const response = await fetch(url, {
 		method: "POST",
@@ -8,7 +8,7 @@ const fetchApi = async <T>({ url, query }: ApiFetcherOptions): Promise<ApiFetche
 			"Content-Type": "application/json",
 		},
 		//in post request add always body property and assing query stringified
-		body: JSON.stringify({ query }),
+		body: JSON.stringify({ query, variables }),
 	});
 	const { data, errors } = await response.json();
 	if (errors) {
