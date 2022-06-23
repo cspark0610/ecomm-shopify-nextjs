@@ -1,9 +1,9 @@
 //dinamic page folder products -> [slug of product] => /products/[slug]
 
 // react, next utils
-import { useRouter } from "next/router";
 // components
 import { Layout } from "@components/common";
+import { Container } from "@components/ui";
 // types
 import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from "next";
 // framework
@@ -31,7 +31,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext<{ slug: s
 		config,
 		variables: { slug: params?.slug },
 	});
-	console.log("aca", product);
+	console.log("aca", JSON.stringify(product, null, 2));
 
 	return {
 		props: {
@@ -41,12 +41,50 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext<{ slug: s
 };
 // la function ahora recibira por props el objeto que retorna el getStaticProps
 export default function ProductSlug({ product }: InferGetStaticPropsType<typeof getStaticProps>) {
-	// console.log(product);
 	return (
-		<div>
-			<h2>{product?.name}</h2>
-			<h2>{product?.slug}</h2>
-		</div>
+		<Container>
+			<div>
+				<p>id: {product?.id}</p>
+				<p>name: {product?.name}</p>
+				<p>price value: {product?.price.value}</p>
+				<p>price currency: {product?.price.currencyCode}</p>
+				<p>description: {product?.description}</p>
+
+				<h1 className="mb-4 leading-4">OPTIONS</h1>
+				<div>
+					{product?.options.map((option) => (
+						<div key={option.id}>
+							<p>Name: {option.displayName}</p>
+							{option.values.map((value) => (
+								<div key={value.label}>
+									<p>Value: {value.label}</p>
+									<p>Hex Color: {value.hexColor}</p>
+								</div>
+							))}
+						</div>
+					))}
+				</div>
+			</div>
+			<h1 className="mb-4 leading-4">VARIANTS</h1>
+			<div>
+				{product?.variants.map((variant) => (
+					<div key={variant.id}>
+						<p>Variant Name: {variant.name}</p>
+						{variant.options.map((option) => (
+							<div key={option.id}>
+								<p>Option Name: {option.displayName}</p>
+								{option.values.map((value) => (
+									<div key={value.label}>
+										<p>Label: {value.label}</p>
+										<p>Hexcolor: {value.hexColor}</p>
+									</div>
+								))}
+							</div>
+						))}
+					</div>
+				))}
+			</div>
+		</Container>
 	);
 }
 

@@ -6,10 +6,10 @@ const nextConfig = {
 		name: "shopify",
 	},
 	reactStrictMode: false,
-	// i18n: {
-	// 	locales: ["en-US", "es"],
-	// 	defaultLocale: "en-US",
-	// },
+	i18n: {
+		locales: ["en-US", "es"],
+		defaultLocale: "es",
+	},
 };
 
 // console.log(JSON.stringify(withFrameworkConfig(nextConfig), null, 2));
