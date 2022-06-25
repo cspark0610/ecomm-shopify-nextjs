@@ -1,6 +1,7 @@
 // sirve como wrapper de todos los componentes de la aplicacion
 //styles
 import "@assets/main.css";
+import "keen-slider/keen-slider.min.css";
 //types
 import { LayoutProps } from "@components/common/Layout/Layout";
 import { UIProvider, useUI } from "@components/ui/context";

@@ -18,7 +18,6 @@ const placeHolderImage = "/product-image-placeholder.svg";
 const ProductCard: FC<Props> = ({ product, variant = "simple" }) => {
 	// Link href={`/products/${product.slug}` will navigate to /products/cool-hat
 	// to add a className have to use a anchor tag<a></a> inside Link Tag
-
 	const imageUrlNormalized = `${product.images[0].url.split(".").slice(0, 2).join(".")}.png`;
 	//
 	return (
