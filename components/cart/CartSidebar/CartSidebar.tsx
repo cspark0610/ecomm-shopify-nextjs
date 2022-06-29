@@ -38,7 +38,7 @@ const CartSidebar: FC = () => {
 					<div className="px-4 sm:px-6 flex-1">
 						{/* <Link href="/"> */}
 						<h2 className="pt-1 pb-4 text-2xl leading-7 font-bold text-base tracking-wide inline-block">My Cart</h2>
-						{/* </Link> */}8
+						{/* </Link> */}
 						<ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t border-accents-3">
 							Cart Items Here!
 						</ul>
