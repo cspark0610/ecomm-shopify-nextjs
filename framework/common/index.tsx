@@ -15,8 +15,9 @@ export const ApiProvider = ({ children, config, hooks }: ApiProviderProps) => {
 		return {
 			fetcher: config.fetch,
 			hooks,
+			checkoutId: config.checkoutCookie,
 		};
-	}, [config.fetch, hooks]);
+	}, [config.fetch, hooks, config.checkoutCookie]);
 	return <ApiContext.Provider value={coreConfig}>{children}</ApiContext.Provider>;
 };
 
