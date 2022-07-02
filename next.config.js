@@ -3,7 +3,7 @@ const { withFrameworkConfig } = require("./framework/common/config");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	framework: {
-		name: "shopify",
+		name: process.env.NEXT_PUBLIC_FRAMEWORK,
 	},
 	reactStrictMode: false,
 	i18n: {
