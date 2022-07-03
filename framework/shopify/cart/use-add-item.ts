@@ -15,7 +15,7 @@ export const handler: MutationHook = {
 			...options,
 			variables,
 		});
-		// debugger;
+
 		return response;
 	},
 	useHook: ({ fetch }: any) => {
