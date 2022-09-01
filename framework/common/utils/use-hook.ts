@@ -1,9 +1,9 @@
 import { useApiProvider } from "@common";
-import { ApiHooks, MutationHook } from "@common/types/hooks";
+import { ApiHooks, Hook, MutationHook } from "@common/types/hooks";
 import { ApiFetcher } from "../types/api";
 import useSWR from "swr";
 
-export const useHook = (fn: (apiHooks: ApiHooks) => MutationHook) => {
+export const useHook = (fn: (apiHooks: ApiHooks) => Hook) => {
 	const { hooks } = useApiProvider();
 	return fn(hooks);
 };
