@@ -40,8 +40,10 @@ const ProductView: FC<Props> = ({ product }) => {
 				productId: String(product.id),
 				variantId: variant?.id,
 				variantOptions: variant?.options,
+				quantity: 1,
 			};
 			const output = await addItem(item);
+
 			alert(JSON.stringify(output));
 			openSidebar();
 		} catch (error) {
@@ -93,7 +95,10 @@ const ProductView: FC<Props> = ({ product }) => {
 												variant={option.displayName}
 												active={optValue.label.toLowerCase() === activeChoice ? true : false}
 												onClick={() => {
-													setChoices({ ...choices, [option.displayName.toLowerCase()]: optValue.label.toLowerCase() });
+													setChoices({
+														...choices,
+														[option.displayName.toLowerCase()]: optValue.label.toLowerCase(),
+													});
 													// going to have for.ex { Size: 'm', Color: '#00000'}
 												}}
 											/>
