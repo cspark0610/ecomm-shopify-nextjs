@@ -6,7 +6,7 @@ import { CheckoutLineItemsAddPayload } from "@framework/schema";
 import { checkoutToCart, getCheckoutId } from "@framework/utils";
 import { checkoutLineItemsAddMutation } from "@framework/utils/mutations";
 
-export default useAddItem as unknown as UseAddItem<typeof handler>;
+export default useAddItem as UseAddItem<typeof handler>;
 
 export type AddItemHookDescriptor = {
 	fetcherInput: {

@@ -16,7 +16,10 @@ const CartSidebar: FC = () => {
 			<header className="px-4 pt-6 pb-4 sm:px-6">
 				<div className="flex items-start justify-between space-x-3">
 					<div className="h-7 flex items-center">
-						<button onClick={ui.closeSidebar} className="hover:text-gray-500 transition ease-in-out duration-150">
+						<button
+							onClick={ui.closeSidebar}
+							className="hover:text-gray-500 transition ease-in-out duration-150"
+						>
 							<Cross className="h-6 w-6" />
 						</button>
 					</div>
@@ -38,7 +41,9 @@ const CartSidebar: FC = () => {
 					{/* if isEmpty === false */}
 					<div className="px-4 sm:px-6 flex-1">
 						{/* <Link href="/"> */}
-						<h2 className="pt-1 pb-4 text-2xl leading-7 font-bold text-base tracking-wide inline-block">My Cart</h2>
+						<h2 className="pt-1 pb-4 text-2xl leading-7 font-bold text-base tracking-wide inline-block">
+							My Cart
+						</h2>
 						{/* </Link> */}
 						<ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t border-accents-3">
 							Cart Items Here!

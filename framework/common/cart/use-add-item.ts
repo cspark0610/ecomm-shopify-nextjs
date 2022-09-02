@@ -4,7 +4,9 @@ import { useHook, useMutationHook } from "@common/utils/use-hook";
 export type UseAddItem<H extends MutationHook = MutationHook<any>> = ReturnType<H["useHook"]>;
 
 const useAddItem = () => {
-	const hook: MutationHook = useHook((hooks) => hooks.cart.useAddItem);
+	const hook = useHook((hooks) => {
+		return hooks.cart.useAddItem;
+	});
 
 	return useMutationHook({ ...hook })();
 };
