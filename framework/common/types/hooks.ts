@@ -59,5 +59,3 @@ export type SWRHook<H extends HookDescriptor = any> = {
 };
 
 export type Hook = MutationHook | SWRHook;
-
-// (input: H["fetcherInput"]) =>

@@ -38,15 +38,12 @@ export const handler: SWRHook<UseCartHookDescriptor> = {
 	useHook:
 		({ useData }) =>
 		() => {
-			// eslint-disable-next-line react-hooks/rules-of-hooks
 			const data = useData({
 				swrOptions: {
 					//auto revalidate when window gets focused
 					revalidateOnFocus: false,
 				},
 			});
-
-			// eslint-disable-next-line react-hooks/rules-of-hooks
 			return useMemo(() => {
 				return data;
 			}, [data]);
