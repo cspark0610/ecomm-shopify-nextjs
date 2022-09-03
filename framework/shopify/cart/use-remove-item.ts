@@ -23,13 +23,13 @@ export const handler: MutationHook<RemoveItemDescriptor> = {
 		query: checkoutLineItemsRemoveMutation,
 	},
 	async fetcher({ input: { id }, fetch, options }) {
-		const { data } = fetch({
+		const { data } = (await fetch({
 			...options,
 			variables: {
 				checkoutId: getCheckoutId(),
 				lineItemIds: [id],
 			},
-		}) as any;
+		})) as any;
 
 		const cart = checkoutToCart(data.checkoutLineItemsRemove.checkout);
 		return cart;
