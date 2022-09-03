@@ -14,7 +14,7 @@ const useCart: UseCart = () => {
 		return hook.fetcher(context);
 	};
 
-	return useSWRHook({ ...hook, fetcher: fetcherWrapper });
+	return useSWRHook({ ...hook, fetcher: fetcherWrapper })();
 };
 
 export default useCart;

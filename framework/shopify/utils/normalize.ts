@@ -109,6 +109,7 @@ const normalizeLineItem = ({
 		name: title,
 		path: variant?.product?.handle ?? "",
 		discounts: [],
+		quantity: Number(quantity),
 		options: variant?.selectedOptions?.map(({ name, value }: SelectedOption) => {
 			const option = normalizeProductOption({ id, name, values: [value] });
 			return option;

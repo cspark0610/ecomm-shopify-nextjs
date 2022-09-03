@@ -7,13 +7,14 @@ import { isDark } from "@lib/color";
 import { Check } from "@components/icons";
 
 interface SwatchProps {
+	size?: "sm" | "md" | "lg";
 	label?: string;
 	color?: string;
 	variant: "Size" | "Color" | string;
 	active?: boolean;
 	onClick: () => void;
 }
-const Swatch: FC<SwatchProps> = ({ color, label, variant, active, ...rest }) => {
+const Swatch: FC<SwatchProps> = ({ color, label, variant, active, size = "md", ...rest }) => {
 	label = label?.toUpperCase();
 
 	const rootClassName = cn(s.root, {
@@ -21,6 +22,7 @@ const Swatch: FC<SwatchProps> = ({ color, label, variant, active, ...rest }) => 
 		[s.color]: color,
 		[s.size]: variant === "Size",
 		[s.dark]: color && isDark(color),
+		[s.sm]: size === "sm",
 	});
 	return (
 		<button className={rootClassName} style={color ? { backgroundColor: color } : {}} {...rest}>
