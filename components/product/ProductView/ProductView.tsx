@@ -16,6 +16,7 @@ import { useUI } from "@components/ui/context";
 //hook function
 import useAddItem from "@framework/cart/use-add-item";
 import { useApiProvider } from "@framework";
+import { Cart } from "@common/types/cart";
 
 interface Props {
 	product: Product;
@@ -28,6 +29,7 @@ type Choices = {
 
 const ProductView: FC<Props> = ({ product }) => {
 	const [choices, setChoices] = useState<Choices>({});
+	const [isLoading, setIsLoading] = useState(false);
 	const { openSidebar } = useUI();
 	const addItem = useAddItem();
 	const { hooks, fetcher } = useApiProvider();
@@ -38,16 +40,18 @@ const ProductView: FC<Props> = ({ product }) => {
 		try {
 			const item = {
 				productId: String(product.id),
-				variantId: variant?.id,
-				variantOptions: variant?.options,
+				variantId: String(variant ? variant.id : product.variants[0].id),
+				//variantOptions: variant?.options,
 				quantity: 1,
 			};
-			const output = await addItem(item);
+			setIsLoading(true);
+			const output: Cart = await addItem(item);
+			setIsLoading(false);
 
 			//alert(JSON.stringify(output));
 			openSidebar();
 		} catch (error) {
-			console.log(error);
+			setIsLoading(false);
 		}
 	};
 
@@ -110,7 +114,7 @@ const ProductView: FC<Props> = ({ product }) => {
 						<div className="pb-14 break-words w-full max-w-xl text-lg">{product.description}</div>
 					</section>
 					<div>
-						<Button onClick={addToCart} className={s.button}>
+						<Button onClick={addToCart} className={s.button} isLoading={isLoading}>
 							Add to Cart
 						</Button>
 					</div>

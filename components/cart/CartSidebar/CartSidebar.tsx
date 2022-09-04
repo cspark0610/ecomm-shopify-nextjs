@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Bag, Cross } from "@components/icons";
 import cn from "classnames";
 import { useUI } from "@components/ui/context";
+import { Button } from "@components/ui";
 import useCart from "@common/cart/use-cart";
 import { LineItem } from "@common/types/cart";
 import CartItem from "../CartItem";
@@ -75,13 +76,9 @@ const CartSidebar: FC = () => {
 								<span>{data.totalPrice}</span>
 							</div>
 						</div>
-						<button
-							onClick={() => {
-								alert("Going to checkout!");
-							}}
-						>
+						<Button Component="a" href="/">
 							Proceed to Checkout
-						</button>
+						</Button>
 					</div>
 				</>
 			)}

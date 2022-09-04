@@ -42,9 +42,18 @@ export const handler: MutationHook<AddItemHookDescriptor> = {
 		() => {
 			const { mutate: updateCart } = useCart();
 			return async (input) => {
-				const response = fetch(input);
+				const response = await fetch(input);
 				await updateCart(response, false);
 				return response;
 			};
 		},
 };
+
+// add a delay when add-item to cart with setTimeout
+// return new Promise((resolve, reject) => {
+// 	setTimeout(async () => {
+// 		const response = fetch(input);
+// 		await updateCart(response, false);
+// 		resolve(response);
+// 	}, 1000);
+// });
