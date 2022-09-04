@@ -1,3 +1,4 @@
+import { ChangeEvent, useState } from "react";
 import cn from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,13 +7,37 @@ import { Trash, Plus, Minus } from "@components/icons";
 import { LineItem } from "@common/types/cart";
 import { Swatch } from "@components/product";
 import useRemoveItem from "@framework/cart/use-remove-item";
-import { debug } from "console";
+import useUpdateItem from "@framework/cart/use-update-item";
 
 const CartItem = ({ item, currencyCode }: { item: LineItem; currencyCode: string }) => {
 	const price = item.variant.price! * item.quantity || 0;
 	const { options } = item;
-
 	const removeItem = useRemoveItem();
+	const updateItem = useUpdateItem();
+	const [quantity, setQuantity] = useState(item.quantity);
+
+	const handleQuantityChange = (val: number) => {
+		if (Number.isInteger(val) && val >= 0) {
+			setQuantity(val);
+			//alert(val);
+			updateItem({
+				id: item.id,
+				variantId: item.variantId,
+				quantity: val,
+			});
+		}
+	};
+
+	const handleQuantity = async (e: ChangeEvent<HTMLInputElement>) => {
+		const val = Number(e.target.value);
+		handleQuantityChange(val);
+	};
+
+	const incrementQuantity = async (n = 1) => {
+		const val = Number(quantity) + n;
+		handleQuantityChange(val);
+	};
+
 	return (
 		<li
 			className={cn("flex flex-row space-x-8 py-8", {
@@ -59,7 +84,7 @@ const CartItem = ({ item, currencyCode }: { item: LineItem; currencyCode: string
 
 				<div className="flex items-center mt-3">
 					<button type="button">
-						<Minus onClick={() => {}} />
+						<Minus onClick={() => incrementQuantity(-1)} />
 					</button>
 					<label>
 						<input
@@ -67,13 +92,12 @@ const CartItem = ({ item, currencyCode }: { item: LineItem; currencyCode: string
 							max={99}
 							min={0}
 							className={s.quantity}
-							value={item.quantity}
-							onChange={() => {}}
-							onBlur={() => {}}
+							value={quantity}
+							onChange={handleQuantity}
 						/>
 					</label>
 					<button type="button">
-						<Plus onClick={() => {}} />
+						<Plus onClick={() => incrementQuantity(+1)} />
 					</button>
 				</div>
 			</div>
