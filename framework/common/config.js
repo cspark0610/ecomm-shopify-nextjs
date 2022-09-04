@@ -13,7 +13,9 @@ function withFrameworkConfig(defaultConfig = {}) {
 	}
 	if (!ALLOWED_FRAMEWORKS.includes(framework)) {
 		throw new Error(
-			`the api Framework name ${framework} is not allowed, please use one of ${ALLOWED_FRAMEWORKS.join(", ")}`
+			`the api Framework name ${framework} is not allowed, please use one of ${ALLOWED_FRAMEWORKS.join(
+				", "
+			)}`
 		);
 	}
 	if (framework === "shopify_local") {
