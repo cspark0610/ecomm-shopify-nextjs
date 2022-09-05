@@ -18,7 +18,9 @@ const placeHolderImage = "/product-image-placeholder.svg";
 const ProductCard: FC<Props> = ({ product, variant = "simple" }) => {
 	// Link href={`/products/${product.slug}` will navigate to /products/cool-hat
 	// to add a className have to use a anchor tag<a></a> inside Link Tag
-	const imageUrlNormalized = `${product.images[0].url.split(".").slice(0, 2).join(".")}.png`;
+
+	// const imageUrlNormalized = `${product.images[0].url.split(".").slice(0, 2).join(".")}.png`;
+
 	//
 	return (
 		<Link href={`/products/${product.slug}`}>
@@ -31,7 +33,7 @@ const ProductCard: FC<Props> = ({ product, variant = "simple" }) => {
 						{product.images && (
 							<Image
 								className={s.productImage}
-								src={`${imageUrlNormalized}` ?? placeHolderImage}
+								src={`${product.images[0].url}` ?? placeHolderImage}
 								alt={product.name ?? "product image"}
 								height={320}
 								width={320}
@@ -47,12 +49,14 @@ const ProductCard: FC<Props> = ({ product, variant = "simple" }) => {
 							<h3 className={s.productTitle}>
 								<span>{product.name}</span>
 							</h3>
-							<span className={s.productPrice}>{`${product?.price?.value} ${product?.price?.currencyCode}`}</span>
+							<span
+								className={s.productPrice}
+							>{`${product?.price?.value} ${product?.price?.currencyCode}`}</span>
 						</div>
 						{product.images && (
 							<Image
 								className={s.productImage}
-								src={`${imageUrlNormalized}` ?? placeHolderImage}
+								src={`${product.images[0].url}` ?? placeHolderImage}
 								alt={product.name ?? "product image"}
 								height={540}
 								width={540}

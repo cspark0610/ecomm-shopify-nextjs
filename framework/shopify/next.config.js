@@ -1,5 +1,5 @@
 module.exports = {
 	images: {
-		domains: ["cdn.shopify.png"],
+		domains: ["cdn.shopify.com"],
 	},
 };

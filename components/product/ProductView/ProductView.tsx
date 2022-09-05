@@ -72,7 +72,8 @@ const ProductView: FC<Props> = ({ product }) => {
 							<div className={s.imageContainer} key={image.url}>
 								<Image
 									className={s.img}
-									src={`${product.images[i].url.split(".").slice(0, 2).join(".")}.png`}
+									//src={`${product.images[i].url.split(".").slice(0, 2).join(".")}.png`}
+									src={`${product.images[i].url}`}
 									alt={image.alt}
 									width={1050}
 									height={1050}
